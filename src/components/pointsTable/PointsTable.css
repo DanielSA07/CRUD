@@ -1,0 +1,132 @@
+.table-container{
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+.table-container h2{
+  padding: 1rem 0;
+  font-weight: 100;
+  color: #E93F33;
+  font-family: 'Roboto', sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+table thead tr{
+  height: 60px;
+  background: #fff;
+  border-bottom: solid 1px #2c3e50;
+}
+
+.header-table th{
+  font-family: 'OpenSans-Regular',sans-serif;
+  font-size: 18px;
+  color: #2c3e50;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+table tbody tr{
+  height: 50px;
+}
+
+tbody tr{
+  font-family: 'OpenSans-Regular', sans-serif;
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+.column1{
+  width: 160px;
+  text-align: center;
+  font-family: ;
+}
+
+.column2{
+  width: 200px;
+  text-align: center;
+}
+
+.column3{
+  width: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+button {
+  padding: 0.5rem 0.6rem;
+  margin-right: 0.4rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit{
+  background-color: #fff;
+  border: solid 1px #3498db;
+  color: #3498db;
+}
+
+.edit:hover{
+  background-color: #3498db;
+  border: none;
+  color: #fff;
+}
+
+.delete{
+  background-color: #fff;
+  border: solid 1px #E93F33;
+  color: #E93F33;
+}
+
+.delete:hover{
+  background-color: #E93F33;
+  color: #fff;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .header-table th,
+  tbody td {
+    font-size: 14px;
+    padding: 0.5rem;
+  }
+
+  .column1,
+  .column2,
+  .column3 {
+    width: auto;
+    min-width: 120px;
+  }
+
+  .column3 {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  button {
+    width: 100%;
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,12 @@
+.map-container {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.map-container h1{
+  padding: 1rem 0;
+  font-weight: 100;
+  color: #E93F33;
+  font-family: 'Roboto', sans-serif;
+}
