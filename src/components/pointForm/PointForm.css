@@ -1,79 +1,98 @@
-.form-container{
+.form-container {
+  align-items: center;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 3s ease forwards;
+  margin-bottom: 1rem;
 }
 
 .point-form {
-  width: 80%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.form-container h2{
-  padding: 1rem 0;
-  font-weight: 100;
-  color: #E93F33;
-  font-family: 'Roboto', sans-serif;
+  gap: 1.25rem;
+  width: 50%;
 }
 
 .point-form input,
 .point-form select {
-  width: 50%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 12px;
-  border: solid 1px #000;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #ddd;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  animation: slideInUp 0.5s ease forwards;
 }
 
-.point-form input:focus{
+.point-form input:focus,
+.point-form select:focus {
+  border-color: #E93F33;
   background-color: #fff;
-  border: solid 1px #E93F33;
+  outline: none;
 }
 
 .form-actions {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: slideInUp 0.5s ease forwards;
 }
 
 .form-actions button {
-  padding: 0.5rem 1rem;
-  border: solid 1px #E93F33;
-  border-radius: 11px;
+  min-width: 120px;
+  background-color: #E93F33;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
-  background: #fff;
-  color: #E93F33;
-  width: 7rem;
+  padding: 0.75rem 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.form-actions button:hover{
-  border: solid 1px #17a589;
-  color: #17a589;
+.form-actions button:hover {
+  background-color: #3498db;
 }
 
+.imgPoint{
+  width: 50%;
+}
+
+.point{
+  width: 33rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  animation: slideInUp 0.5s ease forwards;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividad */
 @media (max-width: 768px) {
-  .point-form {
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .point-form input,
-  .point-form select {
-    width: 100%;
-    padding: 0.75rem;
-  }
-
   .form-actions {
     flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
   }
 
   .form-actions button {
     width: 100%;
   }
 }
-
-

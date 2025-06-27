@@ -12,8 +12,8 @@ const Navbar = () => {
         <img src={logo} alt="Logo" className="logo" />
       </div>
       <div className="navbar-links">
-        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Dashboard</Link>
         <Link to="/admin" className={location.pathname === '/admin' ? 'active' : ''}>Admin</Link>
+        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Dashboard</Link>
       </div>
     </nav>
   );

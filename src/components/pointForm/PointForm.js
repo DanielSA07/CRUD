@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './PointForm.css';
+import point from '../../img/point.png'
+
 
 const zonasDisponibles = [
   "Zona Centro",
@@ -11,8 +13,8 @@ const zonasDisponibles = [
 
 const initialState = {
   descripcion: '',
-  lat: '',
-  lng: '',
+  latitud: '',
+  longitud: '',
   venta: '',
   zona: '',
 };
@@ -22,7 +24,13 @@ const PointForm = ({ onSubmit, selectedPoint, clearSelection }) => {
 
   useEffect(() => {
     if (selectedPoint) {
-      setForm(selectedPoint);
+      setForm({
+        descripcion: selectedPoint.descripcion || '',
+        latitud: selectedPoint.latitud || '',
+        longitud: selectedPoint.longitud || '',
+        venta: selectedPoint.venta || '',
+        zona: selectedPoint.zona || '',
+      });
     } else {
       setForm(initialState);
     }
@@ -35,21 +43,34 @@ const PointForm = ({ onSubmit, selectedPoint, clearSelection }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!form.descripcion || !form.lat || !form.lng || !form.venta || !form.zona) {
+
+    const { descripcion, latitud, longitud, venta, zona } = form;
+
+    if (!descripcion || !latitud || !longitud || !venta || !zona) {
       alert('Todos los campos son obligatorios');
       return;
     }
-    onSubmit({ ...form, lat: parseFloat(form.lat), lng: parseFloat(form.lng), venta: parseFloat(form.venta) });
+
+    onSubmit({
+      id: selectedPoint?.id || Date.now(),
+      descripcion,
+      latitud: parseFloat(latitud),
+      longitud: parseFloat(longitud),
+      venta: parseFloat(venta),
+      zona
+    });
+
     setForm(initialState);
+    clearSelection();
   };
 
   return (
     <div className='form-container'>
-      <h2>{selectedPoint ? 'Editar Punto' : 'Nuevo Punto de Venta'}</h2>
       <form onSubmit={handleSubmit} className="point-form">
+        <h2>{selectedPoint ? 'Editar Punto' : 'Nuevo Punto de Venta'}</h2>
         <input type="text" name="descripcion" placeholder="Descripción" value={form.descripcion} onChange={handleChange} />
-        <input type="number" step="any" name="lat" placeholder="Latitud" value={form.lat} onChange={handleChange} />
-        <input type="number" step="any" name="lng" placeholder="Longitud" value={form.lng} onChange={handleChange} />
+        <input type="number" step="any" name="latitud" placeholder="Latitud" value={form.latitud} onChange={handleChange} />
+        <input type="number" step="any" name="longitud" placeholder="Longitud" value={form.longitud} onChange={handleChange} />
         <input type="number" name="venta" placeholder="Venta" value={form.venta} onChange={handleChange} />
         <select name="zona" value={form.zona} onChange={handleChange}>
           <option value="">Selecciona una zona</option>
@@ -63,6 +84,9 @@ const PointForm = ({ onSubmit, selectedPoint, clearSelection }) => {
           {selectedPoint && <button type="button" onClick={clearSelection}>Cancelar</button>}
         </div>
       </form>
+      <div className="imgPoint">
+        <img src={point} alt="Point" className="point" />
+      </div>
     </div>
   );
 };
